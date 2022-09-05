@@ -24,7 +24,7 @@ exports.registerUser= async (req,res)=>{
             message:error.message
         })
     }
-}
+} //Route working fine
 
 exports.loginUser=async(req,res)=>{
     try {
@@ -53,7 +53,7 @@ exports.loginUser=async(req,res)=>{
             message:error.message
         })
     }
-}
+} //Route working fine
 
 exports.logoutUser=async(req,res)=>{
     try {
@@ -72,4 +72,4 @@ exports.logoutUser=async(req,res)=>{
             message:error.message
         })
     }
-}
+} //Route working fine

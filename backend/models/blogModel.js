@@ -1,9 +1,14 @@
 const mongoose=require("mongoose")
 
 const blogSchema=new mongoose.Schema({
-    title:String,
-    Date:Date.now(),
-    author:String,
+    title:{
+        type:String},
+   
+    content:{
+        type:String,
+    },
+    author:{type:String},
+    
 })
 
 
