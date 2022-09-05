@@ -1,6 +1,7 @@
 const jwt=require("jsonwebtoken")
 
 
+
 const sendToken=async (user,statusCode,res)=>{
 
     const token=user.getJWTToken();
