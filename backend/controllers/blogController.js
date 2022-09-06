@@ -53,3 +53,27 @@ exports.deleteBlog=async (req,res)=>{
         })
     }
 }
+
+exports.updateBlog=async (req,res)=>{
+    try {
+        var blog=await Blog.findById(req.params.id)
+        if(!blog){
+            res.status(404).json({
+                success:false,
+                message:"Blog post not found"
+            })
+        }
+        blog=await Blog.findByIdAndUpdate(req.params.id,req.body,{new:true})
+        res.status(200).json({
+            success:true,
+            blog,
+            message:"Blog updated successfully",
+        })
+        
+    } catch (error) {
+        console.log(error)
+        res.status(404).json({
+            success:false,
+            message:error.message,
+        })
+    }}
