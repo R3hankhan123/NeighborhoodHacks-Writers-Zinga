@@ -9,12 +9,14 @@
     background-color:white ;
     font-size: 28px;
     padding-left: 900px;
+
   }
   .nav>div{
     margin-left: 40px;
     margin-top: 60px;
     color:black;
     margin-bottom: 15px;
+
   }
   
   /*.nav>div:hover{
@@ -25,6 +27,7 @@
     display: inline-block;
     position: relative;
     color: black;
+
   }
   
   .nav>div:after {
@@ -58,3 +61,11 @@
         Watermelon:#FF3B3F
         Neutral:#EFEFEF
         */
+
+
+        .link {
+          color: black;
+        }
+        .link:hover{
+          color:#FF3B3F;
+        }
