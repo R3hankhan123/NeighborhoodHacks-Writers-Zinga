@@ -4,10 +4,10 @@
   }
   .nav{
     display: flex;
-    font-family: 'Montserrat' sans-serif;
+    font-family: 'Montserrat', cursive;
     font-weight: 300;
     background-color:white ;
-    font-size: 28px;
+    font-size: 24px;
     padding-left: 900px;
 
   }
@@ -39,12 +39,12 @@
     bottom: 0;
     left: 0;
   
-    background-color: #FF3B3F;
+    background-color: #42a5f5;
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
   }
 .nav>div:hover{
-  color: #FF3B3F;
+  color: #42a5f5;
   cursor: pointer;
 }
   
@@ -67,5 +67,5 @@
           color: black;
         }
         .link:hover{
-          color:#FF3B3F;
+          color:#42a5f5;
         }

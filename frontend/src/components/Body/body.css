@@ -1,6 +1,7 @@
 .firstBox{
     border: 2px solid pink;
 
+
 }
 .secondBox{
     border:2px solid yellow;
@@ -22,6 +23,7 @@
     font-weight: 300;
     padding-top: 20px;
     padding-left: 20px;
+    border: 2px solid red;
 
 
 
@@ -58,7 +60,7 @@
 
 .firstContent{
    
-
+    border: 2px solid red;
     width: 400px;
     margin-left: 200px;
     font-size: 24px;
@@ -108,3 +110,5 @@ color: #3c3c3c;
     margin-left: 800px;
 
 }
+
+.firstimg{ }
