@@ -3,6 +3,9 @@ import './Login.css'
 import {Button, Grid,Link,Paper, Typography} from '@mui/material'
 import { TextField } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { useDispatch } from 'react-redux'
+import { loginUser } from '../../Actions/userActions'
+
 
 
 
@@ -27,10 +30,15 @@ function Login() {
 
       const [email,setEmail]=useState("")
        const [password, setPassword] = useState("")
+       const dispatch=useDispatch();
 
-       const loginHandler=(e)=>{
-e.preventDefault()
-       }
+
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+        dispatch(loginUser(email,password))
+        
+    }
 
     const paperStyle={padding:20,height:'70vh',width:450,margin:"20px auto"}
 
@@ -42,20 +50,24 @@ e.preventDefault()
             <Grid>
             <form onSubmit={loginHandler}>
             <TextField
+            value={email}
           required
           id="outlined-required"
           label="Email"
           fullWidth
           mt={2} mb={4}
+          onChange={(e) => { setEmail(e.target.value) }}
           
         />
          <TextField
           required
+          value={password}
           id="outlined-required"
           label="Password"
           fullWidth
           type='password'
           sx={{marginTop:"5px"}}
+          onChange={(e) => { setPassword(e.target.value) }}
           
         />
 <ThemeProvider theme={theme}><Button color='neutral' variant="contained" fullWidth type='submit'
