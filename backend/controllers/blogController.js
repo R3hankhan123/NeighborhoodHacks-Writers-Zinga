@@ -77,3 +77,95 @@ exports.updateBlog=async (req,res)=>{
             message:error.message,
         })
     }}
+
+exports.commentOnBlog = async (req, res) => {
+        try {
+          const blog = await Blog.findById(req.params.id);
+      
+          if (!blog) {
+            return res.status(404).json({
+              success: false,
+              message: "blog not found",
+            });
+          }
+      
+          let commentIndex = -1;
+      
+          // Checking if comment already exists
+      
+          blog.comments.forEach((item, index) => {
+            if (item.user.toString() === req.user._id.toString()) {
+              commentIndex = index;
+            }
+          });
+      
+          if (commentIndex !== -1) {
+            blog.comments[commentIndex].comment = req.body.comment;
+      
+            await blog.save();
+      
+            return res.status(200).json({
+              success: true,
+              message: "Comment Updated",
+            });
+          } else {
+            blog.comments.push({
+              user: req.user._id,
+              comment: req.body.comment,
+            });
+      
+            await blog.save();
+            return res.status(200).json({
+              success: true,
+              message: "Comment added",
+            });
+          }
+        } catch (error) {
+          res.status(500).json({
+            success: false,
+            message: error.message,
+          });
+        }
+      };
+
+
+exports.likeAndUnlikePost=async(req,res)=>{
+        try {
+          const post = await Blog.findById(req.params.id);
+      
+          if (!post) {
+            return res.status(404).json({
+              success: false,
+              message: "Post not found",
+            });
+          }
+      
+          if (post.likes.includes(req.user._id)) {
+            const index = post.likes.indexOf(req.user._id);
+      
+            post.likes.splice(index, 1);
+      
+            await post.save();
+      
+            return res.status(200).json({
+              success: true,
+              message: "Post Unliked",
+            });
+          } else {
+            post.likes.push(req.user._id);
+      
+            await post.save();
+      
+            return res.status(200).json({
+              success: true,
+              message: "Post Liked",
+            });
+          }
+        } catch (error) {
+          res.status(500).json({
+            success: false,
+            message: error.message,
+          });
+        }
+      };
+      
