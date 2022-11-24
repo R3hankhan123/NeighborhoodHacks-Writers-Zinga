@@ -2,20 +2,26 @@ const User=require("../models/userModel")
 const jwt=require("jsonwebtoken")
 
  const isAuthenticated=async (req,res,next)=>{
+  try {
     const { token } = req.cookies;
 
     if (!token) {
-      res.status(401).json({
-        success:false,
-        message:"Please login first"
-      })
+      return res.status(401).json({
+        message: "Please login first",
+      });
     }
-  
-    const decodedData = jwt.verify(token,"alphabetagammatheta");
-  
-    req.user = await User.findById(decodedData.id);
-  
+
+    const decoded = await jwt.verify(token, "alphabetagammatheta");
+
+    req.user = await User.findById(decoded._id);
+
     next();
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 }
 
 module.exports=isAuthenticated

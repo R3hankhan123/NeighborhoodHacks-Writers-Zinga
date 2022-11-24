@@ -8,6 +8,10 @@ const userSchema= new mongoose.Schema({
         type:String,
         required: [true, "Please enter a name"],
     },
+    avatar: {
+      public_id: String,
+      url: String,
+    },
     email:{
         type:String,
         required: [true, "Please enter an email"],
@@ -48,16 +52,18 @@ const userSchema= new mongoose.Schema({
     resetPassExpire: Date,
 })
 
-userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")){
+userSchema.pre("save",async function(next){
+  if(this.isModified("password")){
       this.password=await bcrypt.hash(this.password,10)
-    }
-    next()
+  }
+
+  next()
 })
 
 
+
 userSchema.methods.getJWTToken=function(){
-    return jwt.sign({id:this._id},"alphabetagammatheta",
+    return jwt.sign({_id:this._id},"alphabetagammatheta",
         {expiresIn:"5d"})
 }
 userSchema.methods.comparePassword=async function(enteredPassword){

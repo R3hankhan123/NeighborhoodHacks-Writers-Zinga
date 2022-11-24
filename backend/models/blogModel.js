@@ -3,6 +3,10 @@ const mongoose=require("mongoose")
 const blogSchema=new mongoose.Schema({
     title:{
         type:String},
+    imageUrl:{
+            public_id:String,
+            url:String,
+        },
    
     content:{
         type:String,

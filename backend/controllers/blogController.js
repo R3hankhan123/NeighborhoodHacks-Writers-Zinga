@@ -1,19 +1,36 @@
 const Blog=require("../models/blogModel")
 const isAuthenticated=require("../middleware/auth")
 const User=require("../models/userModel");
-
+const cloudinary=require("cloudinary")
 
 
 
 exports.publishBlog=async (req,res)=>{
     try {
-        const {title,content}=req.body;
+      const myCloud=await cloudinary.v2.uploader.upload(req.body.image,{
+        folder:"posts"
+      })
+      
+
+
+      const newBlogData = {
+        title:req.body.title,
+        content: req.body.content,
+        imageUrl:{
+          public_id:myCloud.public_id,
+          url:myCloud.secure_url,
+        },
+        author: req.user._id,
+      };
         const user=await User.findById(req.user.id);
 
 
-        const postBlog= await Blog.create({
-            title,content,
-        })
+        const postBlog= await Blog.create(newBlogData)
+
+        user.posts.unshift(postBlog._id);
+
+  
+      await user.save();
         res.status(200).json({
             user,
             success:true,
@@ -39,7 +56,13 @@ exports.deleteBlog=async (req,res)=>{
                 message:"Blog post not found"
             })
         }
-        await Blog.remove()
+        await blog.remove()
+        const user = await User.findById(req.user._id);
+  
+      const index = user.posts.indexOf(req.params.id);
+      user.posts.splice(index, 1);
+  
+      await user.save();
         res.status(200).json({
             success:true,
             message:"Blog deleted successfully",
@@ -168,4 +191,44 @@ exports.likeAndUnlikePost=async(req,res)=>{
           });
         }
       };
-      
+
+exports.getUserFollowingPosts=async(req,res)=>{
+  try {
+    const user=await User.findById(req.user._id)
+    const posts = await Blog.find({
+      author: {
+        $in: user.following,
+      },
+    }).populate("author likes comments.user");
+
+    res.status(200).json({
+      success: true,
+      posts: posts.reverse(),
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
+exports.getAllPosts=async(req,res)=>{
+  try {
+    const posts = await Blog.find({
+      "title": { $regex:`${req.query.title}`, $options: "i" },
+    });
+
+    res.status(200).json({
+      success: true,
+      posts,
+    });
+    
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}

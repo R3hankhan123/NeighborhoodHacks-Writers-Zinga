@@ -1,15 +1,26 @@
 const User=require("../models/userModel");
 const sendToken = require("../utils/jwtToken");
-
+const Blog=require("../models/blogModel")
+const cloudinary =require('cloudinary')
 
 exports.registerUser= async (req,res)=>{
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password,avatar } = req.body;
+        let user = await User.findOne({ email });
+        if (user) {
+          return res
+            .status(400)
+            .json({ success: false, message: "User already exists" });
+        }
+    
+        const myCloud=await cloudinary.v2.uploader.upload(avatar,{
+          folder:"avatars"
+        })  
+         user= await User.create({
+            name,email,password, avatar:{public_id:myCloud.public_id,url:myCloud.secure_url}
 
-
-        const user= await User.create({
-            name,email,password
         })
+   
         res.status(200).json({
             user,
             success:true,
@@ -31,7 +42,7 @@ exports.loginUser = async (req, res) => {
       const { email, password } = req.body;
   
       const user = await User.findOne({ email })
-        .select("+password")
+        .select("+password").populate("posts followers following")
 
   
       if (!user) {
@@ -92,7 +103,9 @@ exports.logoutUser=async(req,res)=>{
 
 exports.getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.user._id)
+    const user = await User.findById(req.user._id).populate(
+      "posts followers following"
+    );
 
 
 
@@ -169,7 +182,10 @@ exports.updatePassword=async(req,res)=>{
 
     user.password = newPassword;
     await user.save();
-
+    res.status(200).json({
+      success:true,
+      message:"Password updated successfully"
+    })
 
   } catch (error) {
     console.log(error)
@@ -187,8 +203,8 @@ exports.getMyPosts = async (req, res) => {
     const posts = [];
 
     for (let i = 0; i < user.posts.length; i++) {
-      const post = await Post.findById(user.posts[i]).populate(
-        "likes comments.user owner"
+      const post = await Blog.findById(user.posts[i]).populate(
+        "likes comments.user author"
       );
       posts.push(post);
     }
@@ -276,6 +292,7 @@ exports.getUserPosts = async (req, res) => {
 exports.followUser = async (req, res) => {
   try {
     const userToFollow = await User.findById(req.params.id);
+
     const loggedInUser = await User.findById(req.user._id);
 
     if (!userToFollow) {
@@ -312,6 +329,7 @@ exports.followUser = async (req, res) => {
       });
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({
       success: false,
       message: error.message,
