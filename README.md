@@ -12,7 +12,17 @@ Connect,Collaborate, and Create writings that inspires the world!
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<a href="https://postimg.cc/crD23w7c" target="_blank"><img src="https://i.postimg.cc/crD23w7c/Screenshot-2022-11-26-at-9-07-01-PM.png" alt="Screenshot-2022-11-26-at-9-07-01-PM"/></a><br/><br/>
+<a href="https://postimg.cc/TpHN1GG7" target="_blank"><img src="https://i.postimg.cc/TpHN1GG7/Screenshot-2022-11-26-at-9-07-09-PM.png" alt="Screenshot-2022-11-26-at-9-07-09-PM"/></a><br/><br/>
+<a href="https://postimg.cc/pmhGn7L2" target="_blank"><img src="https://i.postimg.cc/pmhGn7L2/Screenshot-2022-11-26-at-9-07-23-PM.png" alt="Screenshot-2022-11-26-at-9-07-23-PM"/></a><br/><br/>
+<a href="https://postimg.cc/Bjrh5gj2" target="_blank"><img src="https://i.postimg.cc/Bjrh5gj2/Screenshot-2022-11-26-at-9-07-40-PM.png" alt="Screenshot-2022-11-26-at-9-07-40-PM"/></a><br/><br/>
+<a href="https://postimg.cc/hh2pZgJD" target="_blank"><img src="https://i.postimg.cc/hh2pZgJD/Screenshot-2022-11-26-at-9-07-48-PM.png" alt="Screenshot-2022-11-26-at-9-07-48-PM"/></a><br/><br/>
+<a href="https://postimg.cc/JtrpQtzY" target="_blank"><img src="https://i.postimg.cc/JtrpQtzY/Screenshot-2022-11-26-at-9-07-59-PM.png" alt="Screenshot-2022-11-26-at-9-07-59-PM"/></a><br/><br/>
+<a href="https://postimg.cc/Hc2Bg1Bt" target="_blank"><img src="https://i.postimg.cc/Hc2Bg1Bt/Screenshot-2022-11-26-at-9-08-10-PM.png" alt="Screenshot-2022-11-26-at-9-08-10-PM"/></a><br/><br/>
+<a href="https://postimg.cc/S2qD3x7s" target="_blank"><img src="https://i.postimg.cc/S2qD3x7s/Screenshot-2022-11-26-at-9-08-22-PM.png" alt="Screenshot-2022-11-26-at-9-08-22-PM"/></a><br/><br/>
+<a href="https://postimg.cc/m1gVZpnW" target="_blank"><img src="https://i.postimg.cc/m1gVZpnW/Screenshot-2022-11-26-at-9-08-32-PM.png" alt="Screenshot-2022-11-26-at-9-08-32-PM"/></a><br/><br/>
+
+
 
 
 ## Features
