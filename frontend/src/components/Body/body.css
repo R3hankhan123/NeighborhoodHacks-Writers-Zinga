@@ -1,13 +1,20 @@
 .firstBox{
-    border: 2px solid pink;
+
+    background-color: white;
+display: flex;
+padding-bottom: 100px;
 
 
 }
 .secondBox{
-    border:2px solid yellow;
+
+    display: flex
 }
 .thirdBox{
-    border: 2px solid green;
+
+    background-color: #f8d4bc;
+    display: flex;
+    padding-bottom: 2rem;
 }
 
 .firstHeading{
@@ -19,11 +26,11 @@
     margin-left: 200px;
     
     font-size: 62px;
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Lato';
     font-weight: 300;
     padding-top: 20px;
     padding-left: 20px;
-    border: 2px solid red;
+
 
 
 
@@ -37,7 +44,7 @@
     margin-left: 200px;
 
     font-size: 62px;
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Lato';
     font-weight: 300;
     padding-top: 20px;
     padding-left: 20px;
@@ -51,7 +58,7 @@
     margin-left: 200px;
 
     font-size: 62px;
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Lato';
     font-weight: 300;
     padding-top: 20px;
     padding-left: 20px;
@@ -60,13 +67,13 @@
 
 .firstContent{
    
-    border: 2px solid red;
+
     width: 400px;
     margin-left: 200px;
     font-size: 24px;
     padding-left: 20px;
 padding-top: 20px;
-font-family: 'Montserrat' sans-serif;
+font-family: 'Roboto';
 
 color: #3c3c3c;
 
@@ -78,7 +85,7 @@ color: #3c3c3c;
     font-size: 24px;
     padding-left: 20px;
 padding-top: 20px;
-font-family: 'Montserrat' sans-serif;
+font-family: 'Roboto';
 
 color: #3c3c3c;
 }
@@ -89,7 +96,7 @@ border-radius: 0px;
     font-size: 24px;
     padding-left: 20px;
 padding-top: 20px;
-font-family: 'Montserrat' sans-serif;
+font-family: 'Roboto';
 
 color: #3c3c3c;
 }
@@ -102,13 +109,86 @@ color: #3c3c3c;
       Neutral:#EFEFEF
       */
 
+      .boxContainer{
+        margin-top: 2rem;
+      }
+
 .firstimg{
-    height: 200px;
-    width: 200px;
+    height: 450px;
+    width: 600px;
     display: inline-block;
-    border: 2px solid red;
-    margin-left: 800px;
+
+    margin-left: 200px;
+    margin-top: 90px;
+
 
 }
 
-.firstimg{ }
+.thirdimage{
+    height: 450px;
+    width: 600px;
+    display: inline-block;
+
+    margin-left: 200px;
+    margin-top: 150px;
+
+
+}
+
+
+@media screen and (max-width: 600px){
+    .firstBox{
+        display: block;
+
+    }
+    .secondBox{
+        display: block
+    }
+    .thirdBox{
+        display: block;
+    }
+
+    .firstContent{
+        width: 90%;
+        margin-left: 1rem;
+        margin-top: 0rem;
+    }
+    .firstHeading{
+        margin-left: 2rem; 
+        width: 90%;
+        margin-left: 1rem;  
+    }
+    .firstimg{
+        width: 90%;
+        margin-left: 2rem;
+        height: 90%
+    }
+    
+    .secondHeading{
+        margin-left: 2rem; 
+        width: 90%;
+        margin-left: 1rem;  
+    }
+    .secondContent{
+        width: 90%;
+        margin-left: 1rem;
+        margin-top: 0rem;
+    }
+    .thirdHeading{
+        margin-left: 2rem; 
+        width: 90%;
+        margin-left: 1rem;  
+    }
+    .thirdContent{
+        width: 90%;
+        margin-left: 1rem;
+        margin-top: 0rem;
+    }
+    .thirdimage{
+        margin-left: 20px;
+        margin-top: 0;
+        width: 90%;
+        height: 90%;
+    }
+
+}

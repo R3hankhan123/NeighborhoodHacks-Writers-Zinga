@@ -3,6 +3,9 @@ import "./Register.css"
 import {Button, Grid,Link,Paper, Typography} from '@mui/material'
 import { TextField } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import {useDispatch} from 'react-redux'
+import { registerUser } from '../../Actions/userActions'
+import {Avatar} from '@mui/material'
 
 function Register() {
     const theme = createTheme({
@@ -15,59 +18,83 @@ function Register() {
             darker: '#053e85',
           },
           neutral: {
-            main: '#42a5f5',
+            main: '#087cfc',
             contrastText: '#fff',
           },
         },
       });
-
+      const [name, setName] = useState("")
+const [avatar, setAvatar] = useState("")
+const dispatch = useDispatch()
       const [email,setEmail]=useState("")
        const [password, setPassword] = useState("")
-
+const [confirmPass,setConfirmPass]=useState("")
        const loginHandler=(e)=>{
 e.preventDefault()
+if(password===confirmPass){
+  dispatch(registerUser(name,email,password,avatar))
+}
+else{
+  console.log("Passwords don't match")
+}
        }
+       const handleImageChange = (e) => {
+        const file = e.target.files[0];
+    
+        const Reader = new FileReader();
+        Reader.readAsDataURL(file);
+    
+        Reader.onload = () => {
+          if (Reader.readyState === 2) {
+            setAvatar(Reader.result);
+          }
+        };
+      };
 
-    const paperStyle={padding:20,height:'70vh',width:450,margin:"20px auto"}
+    const paperStyle={padding:20,height:'100%',width:450,margin:"20px auto"}
     return (
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Typography variant='h2' sx={{fontFamily:"Roboto"}} mt={2} mb={4} ml={16}>Sign Up</Typography>
             <Grid>
             <form onSubmit={loginHandler}>
-            <TextField
+            <Avatar
+  src={avatar}
+  alt="User"
+  sx={{ height: "10vmax", width: "10vmax", marginLeft:"10rem" }}
+/>
+            <input  className='imageInputs' type="file" accept="image/*" onChange={handleImageChange} />
+
+
+            <input type="text" value={name} placeholder="Name"
+          className='inputs'
+          onChange={(e)=>{setName(e.target.value)}}
+          />
+            <input
+          type="email"
+          placeholder="Email"
           required
-          id="outlined-required"
-          label="Name"
-          fullWidth
-          mt={2} mb={4}
+          className='inputs'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           
         />
-            <TextField
+         <input
+          type="password"
+          placeholder="Password"
           required
-          id="outlined-required"
-          label="Email"
-          fullWidth
-          mt={2} mb={4}
-          sx={{marginTop:"5px"}}
+          className='inputs'
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           
         />
-         <TextField
+         <input
+          type="password"
+          placeholder="Confirm Password"
           required
-          id="outlined-required"
-          label="Password"
-          fullWidth
-          type='password'
-          sx={{marginTop:"5px"}}
-          
-        />
-         <TextField
-          required
-          id="outlined-required"
-          label="Confirm Password"
-          fullWidth
-          type='password'
-          sx={{marginTop:"5px"}}
+          className='inputs'
+          value={confirmPass}
+          onChange={(e) => setConfirmPass(e.target.value)}
           
         />
 <ThemeProvider theme={theme}><Button color='neutral' variant="contained" fullWidth type='submit'
@@ -77,7 +104,7 @@ e.preventDefault()
             </Grid>
             <ThemeProvider theme={theme}>
 
-            <Typography ml={14} mt={5}>Already have an account? <Link href='/login' color="#42a5f5" underline="hover">Sign In</Link></Typography>
+            <Typography ml={14} mt={2}>Already have an account? <Link href='/login' color="#42a5f5" underline="hover">Sign In</Link></Typography>
             </ThemeProvider> 
             </Paper>
            

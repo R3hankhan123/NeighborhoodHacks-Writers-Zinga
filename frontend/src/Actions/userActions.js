@@ -8,7 +8,7 @@ export const loginUser=(email,password)=>async (dispatch )=>{
             type:"loginRequest"
         })
 
-        const {data}=await axios.post("/api/v1/login",{email,password},{
+        const {data}=await axios.post("/api/login",{email,password},{
             headers:{
                 "Content-Type":"application/json"
             }
@@ -20,7 +20,7 @@ export const loginUser=(email,password)=>async (dispatch )=>{
         })
         
     } catch (error) {
-        console.log(error)
+
         dispatch({
             type:"loginFailure",
             payload: error.response.data.message,
@@ -34,7 +34,7 @@ export const registerUser = (name, email, password,avatar) => async (dispatch) =
       });
 
       const { data } = await axios.post(
-        "/api/v1/register",
+        "/api/register",
         { name, email, password,avatar },
         {
           headers: {
@@ -61,7 +61,7 @@ export const loadUser = () => async (dispatch) => {
         type: "loadUserRequest",
       });
   
-      const { data } = await axios.get("/api/v1/me");
+      const { data } = await axios.get("/api/me");
   
       dispatch({
         type: "loadUserSuccess",
@@ -81,7 +81,7 @@ export const logoutUser = () => async (dispatch) => {
         type: "logoutUserRequest",
       });
   
-      await axios.get("/api/v1/logout");
+      await axios.get("/api/logout");
   
       dispatch({
         type: "logoutUserSuccess",
@@ -101,7 +101,7 @@ export const logoutUser = () => async (dispatch) => {
         type: "myPostsRequest",
       });
   
-      const { data } = await axios.get("/api/v1/myPosts");
+      const { data } = await axios.get("/api/myPosts");
       dispatch({
         type: "myPostsSuccess",
         payload: data.posts,
@@ -122,7 +122,7 @@ export const likeAndUnlikePost=(id)=>async(dispatch)=>{
       type: "likePostRequest",
     });
 
-    const { data } = await axios.get(`/api/v1/post/${id}`);
+    const { data } = await axios.get(`/api/post/${id}`);
 console.log(data.message)
     dispatch({
       type: "likePostSuccess",
@@ -143,7 +143,7 @@ export const getOtherProfile=(id)=>async(dispatch)=>{
       type: "loadOtherProfileRequest",
     });
 
-    const { data } = await axios.get(`/api/v1/user/${id}`);
+    const { data } = await axios.get(`/api/user/${id}`);
 console.log(data.user)
     dispatch({
       type: "loadOtherProfileSuccess",
@@ -165,7 +165,7 @@ export const followUser=(id)=>async(dispatch)=>{
       type: "followProfileRequest",
     });
 
-    const { data } = await axios.get(`/api/v1/follow/${id}`);
+    const { data } = await axios.get(`/api/follow/${id}`);
 
     dispatch({
       type: "followProfileSuccess",
@@ -187,7 +187,7 @@ export const getUserFollowingPosts=()=>async(dispatch)=>{
       type: "getUserFollowingPostsRequest",
     });
 
-    const { data } = await axios.get(`/api/v1/posts`);
+    const { data } = await axios.get(`/api/posts`);
 
     dispatch({
       type: "getUserFollowingPostsSuccess",
@@ -211,7 +211,7 @@ export const updatePassword=(oldPass,newPass)=>async (dispatch )=>{
           type:"updatePasswordRequest"
       })
 
-      const {data}=await axios.put("/api/v1/updateMyPassword",{oldPass,newPass},{
+      const {data}=await axios.put("/api/updateMyPassword",{oldPass,newPass},{
           headers:{
               "Content-Type":"application/json"
           }
@@ -238,7 +238,7 @@ export const getAllUsers=(name="")=>async(dispatch)=>{
         type:"allUsersRequest"
     })
 
-    const {data}=await axios.get(`/api/v1/users?name=${name}`)
+    const {data}=await axios.get(`/api/users?name=${name}`)
     
     dispatch({
         type:"allUsersSuccess",
