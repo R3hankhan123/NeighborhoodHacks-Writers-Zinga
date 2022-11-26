@@ -232,3 +232,20 @@ exports.getAllPosts=async(req,res)=>{
     });
   }
 }
+exports.getPost=async(req,res)=>{
+  try {
+    const post = await Blog.find(req.params._id).populate("likes comments author")
+      
+
+    res.status(200).json({
+      success: true,
+      post
+    });
+    
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}

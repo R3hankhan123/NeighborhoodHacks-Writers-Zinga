@@ -11,8 +11,8 @@ app.use(express.json({
 app.use(cors());
 
 
-app.use("/api/v1",userRoutes)
-app.use("/api/v1/",blogRoutes)
+app.use("/api/",userRoutes)
+app.use("/api/",blogRoutes)
 
 
 

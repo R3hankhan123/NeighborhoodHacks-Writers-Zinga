@@ -1,7 +1,9 @@
 const mongoose=require("mongoose")
 const jwt=require("jsonwebtoken")
 const bcrypt = require("bcryptjs");
+const dotenv=require("dotenv")
 
+dotenv.config()
 
 const userSchema= new mongoose.Schema({
     name:{
@@ -63,7 +65,7 @@ userSchema.pre("save",async function(next){
 
 
 userSchema.methods.getJWTToken=function(){
-    return jwt.sign({_id:this._id},"alphabetagammatheta",
+    return jwt.sign({_id:this._id},process.env.JWTKEY,
         {expiresIn:"5d"})
 }
 userSchema.methods.comparePassword=async function(enteredPassword){
