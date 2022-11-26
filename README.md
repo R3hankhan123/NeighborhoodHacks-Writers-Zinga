@@ -40,6 +40,7 @@ Connect,Collaborate, and Create writings that inspires the world!
 **Client:** React, Redux, CSS
 
 **Server:** Node, Express
+**Database:**  MongoDB
 
 
 ## License
