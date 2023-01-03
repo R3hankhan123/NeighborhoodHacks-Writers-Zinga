@@ -1,6 +1,7 @@
 const {publishBlog, deleteBlog, updateBlog,likeAndUnlikePost,commentOnBlog, getUserFollowingPosts, getAllPosts, getPost}=require("../controllers/blogController")
 const express=require("express");
 const  isAuthenticated  = require("../middleware/auth");
+const { generateImage } = require("../middleware/openai");
 const router = express.Router();
 
 router.route('/publish/blog').post(isAuthenticated,publishBlog)
