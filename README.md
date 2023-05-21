@@ -1,45 +1,14 @@
-
-# Writers Zinga
-
-A place where your words make a difference!
-
+## Inspiration
+We have seen in college that many people love to tell poems, story and many more but most do not do that as they are afraid what will other people think.
+## What it does
 Writers Zinga is a platform designed to help writers connect and collaborate to make amazing pieces of writing.
-
 Formatted Letters?Poems? Crispy stories? etc. We have you covered!
-
-Connect,Collaborate, and Create writings that inspires the world!
-
-
-## Screenshots
-
-
-
-
-https://user-images.githubusercontent.com/86240862/204138393-95c48c8c-22d7-4a4e-beed-aa3ddcb3e824.mp4
-
-
-
-
-## Features
-
-- JWT Authentication
-- CRUD operations
-- Like/Unlike Posts
-- Follow/Unfollow users
-- Simple and Easy to use
-- Capable of searching users and posts
-
-
-## Tech Stack
-
-**Client:** React, Redux, CSS
-
-**Server:** Node, Express
-
-**Database:**  MongoDB
-
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
+Connect ,Collaborate, and Create writings that inspires the world!
+## How we built it
+For the frontend we used react.js and for the backend we used node.js and express.js and mongodb for the database.
+## Challenges we ran into
+The main problem we ran into was trying to use JWT authentication.
+## Accomplishments that we're proud of
+That we were able to use JWT auth
+## What we learned
+We learned how to use JWT auth# NeighborhoodHacks-Writers-Zinga
